@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, Box, Torus } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { Mesh } from 'three';
 
 interface AnimatedMeshProps {
@@ -25,42 +25,35 @@ const AnimatedMesh = ({ position, rotationSpeed, color, type }: AnimatedMeshProp
   });
 
   const renderMesh = () => {
+    const materialProps = {
+      color: color,
+      metalness: 0.7,
+      roughness: 0.2,
+      emissive: color,
+      emissiveIntensity: 0.1,
+    };
+
     switch (type) {
       case 'sphere':
         return (
-          <Sphere ref={meshRef} position={position} args={[0.8, 32, 32]}>
-            <meshStandardMaterial 
-              color={color} 
-              metalness={0.7} 
-              roughness={0.2} 
-              emissive={color}
-              emissiveIntensity={0.1}
-            />
-          </Sphere>
+          <mesh ref={meshRef} position={position}>
+            <sphereGeometry args={[0.8, 32, 32]} />
+            <meshStandardMaterial {...materialProps} />
+          </mesh>
         );
       case 'box':
         return (
-          <Box ref={meshRef} position={position} args={[1.2, 1.2, 1.2]}>
-            <meshStandardMaterial 
-              color={color} 
-              metalness={0.8} 
-              roughness={0.1}
-              emissive={color}
-              emissiveIntensity={0.1}
-            />
-          </Box>
+          <mesh ref={meshRef} position={position}>
+            <boxGeometry args={[1.2, 1.2, 1.2]} />
+            <meshStandardMaterial {...materialProps} metalness={0.8} roughness={0.1} />
+          </mesh>
         );
       case 'torus':
         return (
-          <Torus ref={meshRef} position={position} args={[1, 0.4, 16, 100]}>
-            <meshStandardMaterial 
-              color={color} 
-              metalness={0.6} 
-              roughness={0.3}
-              emissive={color}
-              emissiveIntensity={0.1}
-            />
-          </Torus>
+          <mesh ref={meshRef} position={position}>
+            <torusGeometry args={[1, 0.4, 16, 100]} />
+            <meshStandardMaterial {...materialProps} metalness={0.6} roughness={0.3} />
+          </mesh>
         );
       default:
         return null;
@@ -128,6 +121,7 @@ const ThreeScene = ({ className = "" }: ThreeSceneProps) => {
       <Canvas
         camera={{ position: [0, 0, 8], fov: 45 }}
         style={{ background: 'transparent' }}
+        gl={{ antialias: true, alpha: true }}
       >
         <Scene />
       </Canvas>
