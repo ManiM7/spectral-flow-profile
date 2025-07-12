@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { User, MapPin, Calendar, GraduationCap } from 'lucide-react';
+import profilePhoto from '../../assets/profile-photo.jpg';
 
 const AboutSection = () => {
   const [ref, inView] = useInView({
@@ -68,6 +69,23 @@ const AboutSection = () => {
                   <User className="w-6 h-6 text-primary" />
                   <h3 className="text-2xl font-semibold">Personal Info</h3>
                 </div>
+
+                {/* Profile Photo */}
+                <motion.div 
+                  className="flex justify-center mb-6"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  <div className="relative">
+                    <img
+                      src={profilePhoto}
+                      alt="Profile"
+                      className="w-32 h-32 rounded-full object-cover border-4 border-primary/20 shadow-lg"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-transparent" />
+                  </div>
+                </motion.div>
                 
                 <div className="space-y-4 text-muted-foreground">
                   <div className="flex items-center space-x-3">
