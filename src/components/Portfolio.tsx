@@ -5,8 +5,6 @@ import ParticleBackground from './ParticleBackground';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
-import ArticlesSection from './sections/ArticlesSection';
-import ProfilesSection from './sections/ProfilesSection';
 import ContactSection from './sections/ContactSection';
 
 const Portfolio = () => {
@@ -24,7 +22,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'articles', 'profiles', 'contact'];
+      const sections = ['home', 'about', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -94,8 +92,6 @@ const Portfolio = () => {
           <HeroSection />
           <AboutSection />
           <SkillsSection />
-          <ArticlesSection />
-          <ProfilesSection />
           <ContactSection />
         </motion.main>
       </AnimatePresence>
