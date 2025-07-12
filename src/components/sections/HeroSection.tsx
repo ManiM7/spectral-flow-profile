@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThreeScene from '../ThreeScene';
+import heroBg from '../../assets/hero-bg.jpg';
 
 const HeroSection = () => {
   const scrollToNextSection = () => {
@@ -9,6 +10,15 @@ const HeroSection = () => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'John_Doe_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const socialLinks = [
@@ -19,8 +29,17 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 gradient-hero opacity-80" />
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 gradient-hero opacity-90" />
+      
+      {/* Glass blur overlay */}
+      <div className="absolute inset-0 backdrop-blur-sm bg-background/20" />
       
       {/* 3D Scene Background */}
       <div className="absolute inset-0 opacity-30">
@@ -86,6 +105,7 @@ const HeroSection = () => {
             >
               <Button
                 size="lg"
+                onClick={handleDownloadResume}
                 className="group relative overflow-hidden glass hover:neon-glow transition-smooth"
               >
                 <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
