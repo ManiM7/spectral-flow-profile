@@ -81,13 +81,13 @@ const AboutSection = () => {
                 </div>
 
                 <p className="mt-6 leading-relaxed">
-                  I'm a passionate frontend developer with a strong foundation in modern web technologies. 
-                  I love creating interactive and visually appealing user interfaces that provide great user experiences.
+                  I'm a recent graduate passionate about frontend development and eager to create interactive, 
+                  user-friendly web applications. I enjoy learning new technologies and building projects that solve real-world problems.
                 </p>
 
                 <p className="mt-4 leading-relaxed">
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-                  or playing video games. I believe in continuous learning and staying updated with the latest trends in technology.
+                  When I'm not coding, you can find me exploring new technologies, working on personal projects, 
+                  or playing video games. I believe in continuous learning and am excited to grow my skills in the tech industry.
                 </p>
               </div>
             </motion.div>
@@ -137,9 +137,9 @@ const AboutSection = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
           >
             {[
-              { label: 'Projects Completed', value: '15+' },
-              { label: 'Technologies Learned', value: '20+' },
-              { label: 'Coding Hours', value: '1000+' },
+              { label: 'Projects Built', value: '8+' },
+              { label: 'Technologies Used', value: '12+' },
+              { label: 'Learning Hours', value: '500+' },
               { label: 'Coffee Consumed', value: '∞' },
             ].map((stat, index) => (
               <motion.div
