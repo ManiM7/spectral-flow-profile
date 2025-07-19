@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThreeScene from '../ThreeScene';
+import TechPDFGenerator from '../TechPDFGenerator';
 import heroBg from '../../assets/hero-bg.jpg';
 
 const HeroSection = () => {
@@ -125,6 +126,8 @@ const HeroSection = () => {
                 <ArrowDown className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                 Explore Work
               </Button>
+              
+              <TechPDFGenerator />
             </motion.div>
 
             {/* Social Links */}
